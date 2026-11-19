@@ -1,0 +1,39 @@
+/* Self-hosted fonts (Latin subset). No requests to Google Fonts or any other third party.
+   Licence: SIL Open Font License 1.1, see assets/fonts/OFL.txt */
+
+/* Digits 0-9 only (2.7 KB). Atkinson draws a slashed zero, which looks heavy in headings and dates,
+   so the numerals come from Hanken Grotesk. unicode-range keeps every other character on Atkinson.
+   size-adjust matches Hanken's numeral height to Atkinson's cap height. */
+@font-face {
+  font-family: "Hanken Digits";
+  src: url("../assets/fonts/hanken-grotesk-digits-wght.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0030-0039;
+  size-adjust: 96.5%;
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("../assets/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  src: url("../assets/fonts/atkinson-hyperlegible-mono-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  src: url("../assets/fonts/atkinson-hyperlegible-mono-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}

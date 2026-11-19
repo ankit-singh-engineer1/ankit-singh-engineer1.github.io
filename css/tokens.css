@@ -1,0 +1,156 @@
+/* ==========================================================================
+   Design tokens
+   Every colour on the site comes from the variables in this file. That is what
+   lets the theme picker restyle the whole page, and it is the same idea the
+   Theme Studio extensions are built on.
+
+   To add a theme: copy a block below, change its name and values, then add a
+   matching tile and chip in index.html (see README.md).
+   ========================================================================== */
+
+:root {
+  /* Type */
+  --font-sans: "Hanken Digits", "Atkinson Hyperlegible Next", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Atkinson Hyperlegible Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.1875rem;
+  --text-xl: 1.375rem;
+  --text-2xl: clamp(1.875rem, 1.45rem + 1.4vw, 2.625rem);
+  --text-hero: clamp(3.75rem, 2.1rem + 8.2vw, 7.5rem);
+
+  /* Layout */
+  --container: 72rem;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --header-h: 4rem;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Paper: light, the default */
+:root,
+[data-theme="paper"] {
+  color-scheme: light;
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --surface-2: #ebeef2;
+  --text: #10141b;
+  --muted: #4d5868;
+  --line: #d5dbe3;
+  --accent: #0a6b60;
+  --accent-ink: #ffffff;
+  --radius: 10px;
+  --shadow: 0 1px 2px rgb(16 20 27 / 6%), 0 14px 34px -14px rgb(16 20 27 / 22%);
+}
+
+/* No JavaScript and the system prefers dark: use Ink. Keep in sync with the Ink block. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --bg: #0e1218;
+    --surface: #151b24;
+    --surface-2: #1c2430;
+    --text: #e8ecf2;
+    --muted: #a1abba;
+    --line: #263040;
+    --accent: #63d6c2;
+    --accent-ink: #08201c;
+    --radius: 10px;
+    --shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 18px 40px -16px rgb(0 0 0 / 65%);
+  }
+}
+
+/* Ink: dark, the default for dark systems */
+[data-theme="ink"] {
+  color-scheme: dark;
+  --bg: #0e1218;
+  --surface: #151b24;
+  --surface-2: #1c2430;
+  --text: #e8ecf2;
+  --muted: #a1abba;
+  --line: #263040;
+  --accent: #63d6c2;
+  --accent-ink: #08201c;
+  --radius: 10px;
+  --shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 18px 40px -16px rgb(0 0 0 / 65%);
+}
+
+/* Graphite: neutral dark with an amber accent */
+[data-theme="graphite"] {
+  color-scheme: dark;
+  --bg: #151618;
+  --surface: #1d1f22;
+  --surface-2: #26292d;
+  --text: #ececea;
+  --muted: #a9abaf;
+  --line: #33363b;
+  --accent: #f2b94b;
+  --accent-ink: #1f1500;
+  --radius: 6px;
+  --shadow: 0 1px 2px rgb(0 0 0 / 45%), 0 18px 40px -16px rgb(0 0 0 / 70%);
+}
+
+/* Dusk: indigo with a lavender accent */
+[data-theme="dusk"] {
+  color-scheme: dark;
+  --bg: #14112b;
+  --surface: #1c1838;
+  --surface-2: #26214a;
+  --text: #eeebfa;
+  --muted: #b3acd9;
+  --line: #352f63;
+  --accent: #c4a8ff;
+  --accent-ink: #1a1033;
+  --radius: 14px;
+  --shadow: 0 1px 2px rgb(5 2 20 / 50%), 0 18px 40px -16px rgb(5 2 20 / 75%);
+}
+
+/* Sage: light, soft green */
+[data-theme="sage"] {
+  color-scheme: light;
+  --bg: #edf1ea;
+  --surface: #f9fbf7;
+  --surface-2: #e0e7dc;
+  --text: #14201a;
+  --muted: #46574b;
+  --line: #c9d4c5;
+  --accent: #2c6a3d;
+  --accent-ink: #ffffff;
+  --radius: 12px;
+  --shadow: 0 1px 2px rgb(20 32 26 / 8%), 0 14px 34px -14px rgb(20 32 26 / 24%);
+}
+
+/* Terminal: black with a phosphor-green accent and sharp corners */
+[data-theme="terminal"] {
+  color-scheme: dark;
+  --bg: #050807;
+  --surface: #0b110e;
+  --surface-2: #111a15;
+  --text: #d8f5df;
+  --muted: #8db499;
+  --line: #1e2e24;
+  --accent: #5bff8a;
+  --accent-ink: #02130a;
+  --radius: 2px;
+  --shadow: 0 1px 2px rgb(0 0 0 / 60%), 0 18px 40px -16px rgb(0 0 0 / 80%);
+}
+
+/* Derived tokens. Defined on every themed element so a theme preview
+   (an element carrying its own data-theme) computes them from its own values. */
+:root,
+[data-theme] {
+  --accent-soft: color-mix(in srgb, var(--accent) 14%, var(--surface));
+  --line-strong: color-mix(in srgb, var(--text) 50%, var(--bg));
+  --focus: var(--accent);
+  --stage: color-mix(in srgb, var(--accent) 8%, var(--surface-2));
+}
+
+/* Page-level colours. A theme preview re-scopes --accent and --focus to its own theme,
+   so the selection ring around a preview reads these root values instead. */
+:root {
+  --ui-accent: var(--accent);
+  --ui-focus: var(--focus);
+}

@@ -1,0 +1,78 @@
+/* ==========================================================================
+   Print: a plain, ink-friendly version of the page
+   ========================================================================== */
+
+@media print {
+  :root,
+  [data-theme] {
+    --bg: #fff;
+    --surface: #fff;
+    --surface-2: #f2f2f2;
+    --text: #000;
+    --muted: #333;
+    --line: #bbb;
+    --accent: #000;
+    --accent-ink: #fff;
+  }
+
+  body {
+    font-size: 11pt;
+  }
+
+  .site-header,
+  .picker-wrap,
+  .hero-actions,
+  .ext-visual,
+  .contact-links,
+  .toast,
+  [data-copy],
+  .skip-link,
+  .site-footer a {
+    display: none !important;
+  }
+
+  .section,
+  .hero {
+    padding-block: 1.25rem;
+    break-inside: avoid-page;
+  }
+
+  .hero-grid,
+  .ext,
+  .ext-head,
+  .split {
+    display: block;
+  }
+
+  .hero-name {
+    font-size: 36pt;
+  }
+
+  .split > .section-head {
+    position: static;
+    margin-bottom: 0.75rem;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    word-break: break-all;
+  }
+
+  .project,
+  .job,
+  .ext,
+  .edu {
+    break-inside: avoid;
+  }
+
+  .status,
+  .project {
+    box-shadow: none;
+  }
+}
